@@ -1,4 +1,5 @@
 {
+  "api_path_prefix": "/gosugamers/",
   "async_class_name": "AsyncGosuGamersClient",
   "class_name": "GosuGamersClient",
   "contract_revision": "sha256:de5fed9f9e96ee896300f2d020f44d15ab18d3f5c885548c7cf5a6ef6a90df3d",
