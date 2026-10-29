@@ -1,0 +1,1179 @@
+{
+  "platform": "gosugamers",
+  "operationCount": 17,
+  "operationIds": [
+    "gosugamers-article",
+    "gosugamers-articles",
+    "gosugamers-encounters",
+    "gosugamers-games",
+    "gosugamers-match",
+    "gosugamers-match-game",
+    "gosugamers-matches",
+    "gosugamers-player",
+    "gosugamers-rankings",
+    "gosugamers-results",
+    "gosugamers-stage-groups",
+    "gosugamers-team",
+    "gosugamers-team-results",
+    "gosugamers-tournament",
+    "gosugamers-tournament-participants",
+    "gosugamers-tournament-talents",
+    "gosugamers-tournaments"
+  ],
+  "methods": {
+    "article": "gosugamers-article",
+    "articles": "gosugamers-articles",
+    "encounters": "gosugamers-encounters",
+    "games": "gosugamers-games",
+    "match": "gosugamers-match",
+    "match_game": "gosugamers-match-game",
+    "matches": "gosugamers-matches",
+    "player": "gosugamers-player",
+    "rankings": "gosugamers-rankings",
+    "results": "gosugamers-results",
+    "stage_groups": "gosugamers-stage-groups",
+    "team": "gosugamers-team",
+    "team_results": "gosugamers-team-results",
+    "tournament": "gosugamers-tournament",
+    "tournament_participants": "gosugamers-tournament-participants",
+    "tournament_talents": "gosugamers-tournament-talents",
+    "tournaments": "gosugamers-tournaments"
+  },
+  "operations": {
+    "gosugamers-article": {
+      "id": "gosugamers-article",
+      "method": "GET",
+      "path": "/gosugamers/article",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Numeric article id from gosugamers-articles",
+          "in": "query",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "79434"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-articles": {
+      "id": "gosugamers-articles",
+      "method": "GET",
+      "path": "/gosugamers/articles",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "section",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india",
+            "entertainment",
+            "genshin-impact",
+            "honkai-star-rail",
+            "zenless-zone-zero",
+            "honor-of-kings",
+            "umamusume-pretty-derby"
+          ]
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "news",
+            "features"
+          ]
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Article section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india, entertainment, genshin-impact, honkai-star-rail, zenless-zone-zero, honor-of-kings, umamusume-pretty-derby; omit for all",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india",
+            "entertainment",
+            "genshin-impact",
+            "honkai-star-rail",
+            "zenless-zone-zero",
+            "honor-of-kings",
+            "umamusume-pretty-derby"
+          ],
+          "in": "query",
+          "name": "section",
+          "type": "string"
+        },
+        {
+          "description": "Article type; one of news, features; omit for both",
+          "enum": [
+            "news",
+            "features"
+          ],
+          "in": "query",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "description": "1-based page; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-encounters": {
+      "id": "gosugamers-encounters",
+      "method": "GET",
+      "path": "/gosugamers/encounters",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "match_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "team1_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "team2_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section of the match; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Numeric id of the match whose other meetings are wanted; that match is left out",
+          "in": "query",
+          "name": "match_id",
+          "required": true,
+          "type": "string",
+          "x-example": "660816"
+        },
+        {
+          "description": "Numeric id of the first team",
+          "in": "query",
+          "name": "team1_id",
+          "required": true,
+          "type": "string",
+          "x-example": "38335"
+        },
+        {
+          "description": "Numeric id of the second team",
+          "in": "query",
+          "name": "team2_id",
+          "required": true,
+          "type": "string",
+          "x-example": "37547"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-games": {
+      "id": "gosugamers-games",
+      "method": "GET",
+      "path": "/gosugamers/games",
+      "pathParams": [],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-match": {
+      "id": "gosugamers-match",
+      "method": "GET",
+      "path": "/gosugamers/match",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "tournament_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "match_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string",
+          "x-example": "dota2"
+        },
+        {
+          "description": "Numeric tournament id from gosugamers-matches or gosugamers-results (tournament.id)",
+          "in": "query",
+          "name": "tournament_id",
+          "required": true,
+          "type": "string",
+          "x-example": "63208"
+        },
+        {
+          "description": "Numeric match id from gosugamers-matches or gosugamers-results (id)",
+          "in": "query",
+          "name": "match_id",
+          "required": true,
+          "type": "string",
+          "x-example": "663299"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-match-game": {
+      "id": "gosugamers-match-game",
+      "method": "GET",
+      "path": "/gosugamers/match-game",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Numeric game id from the games list of gosugamers-match",
+          "in": "query",
+          "name": "game_id",
+          "required": true,
+          "type": "string",
+          "x-example": "1361936"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-matches": {
+      "id": "gosugamers-matches",
+      "method": "GET",
+      "path": "/gosugamers/matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "type": "string"
+        },
+        {
+          "description": "1-based page; page 1 with the default size is read from the public page, any other page or size from the site's JSON API; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-player": {
+      "id": "gosugamers-player",
+      "method": "GET",
+      "path": "/gosugamers/player",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "player_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string",
+          "x-example": "dota2"
+        },
+        {
+          "description": "Numeric player id from gosugamers-team (roster[].id)",
+          "in": "query",
+          "name": "player_id",
+          "required": true,
+          "type": "string",
+          "x-example": "368742"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-rankings": {
+      "id": "gosugamers-rankings",
+      "method": "GET",
+      "path": "/gosugamers/rankings",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "region_id",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Ranking region id from the regions list of the response; 0 is Global; defaults to 0",
+          "in": "query",
+          "minimum": 0,
+          "name": "region_id",
+          "type": "integer"
+        },
+        {
+          "description": "Team name prefix, up to 100 characters",
+          "in": "query",
+          "name": "q",
+          "type": "string",
+          "x-example": "Te"
+        },
+        {
+          "description": "1-based page; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-results": {
+      "id": "gosugamers-results",
+      "method": "GET",
+      "path": "/gosugamers/results",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "type": "string"
+        },
+        {
+          "description": "1-based page; page 1 with the default size is read from the public page, any other page or size from the site's JSON API; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-stage-groups": {
+      "id": "gosugamers-stage-groups",
+      "method": "GET",
+      "path": "/gosugamers/stage-groups",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tournament_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "stage_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Numeric tournament id from gosugamers-tournaments or gosugamers-matches",
+          "in": "query",
+          "name": "tournament_id",
+          "required": true,
+          "type": "string",
+          "x-example": "63147"
+        },
+        {
+          "description": "Numeric stage id (stages[].id) from gosugamers-tournament",
+          "in": "query",
+          "name": "stage_id",
+          "required": true,
+          "type": "string",
+          "x-example": "28413"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-team": {
+      "id": "gosugamers-team",
+      "method": "GET",
+      "path": "/gosugamers/team",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string",
+          "x-example": "dota2"
+        },
+        {
+          "description": "Numeric team id from gosugamers-matches, gosugamers-results or gosugamers-match (teams[].id)",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "string",
+          "x-example": "51203"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-team-results": {
+      "id": "gosugamers-team-results",
+      "method": "GET",
+      "path": "/gosugamers/team-results",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Numeric team id from gosugamers-rankings, gosugamers-results or gosugamers-team",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "string",
+          "x-example": "37547"
+        },
+        {
+          "description": "1-based page; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-tournament": {
+      "id": "gosugamers-tournament",
+      "method": "GET",
+      "path": "/gosugamers/tournament",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "tournament_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string",
+          "x-example": "dota2"
+        },
+        {
+          "description": "Numeric tournament id from gosugamers-matches or gosugamers-results (tournament.id)",
+          "in": "query",
+          "name": "tournament_id",
+          "required": true,
+          "type": "string",
+          "x-example": "63208"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-tournament-participants": {
+      "id": "gosugamers-tournament-participants",
+      "method": "GET",
+      "path": "/gosugamers/tournament-participants",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "tournament_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section of the tournament; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Numeric tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results",
+          "in": "query",
+          "name": "tournament_id",
+          "required": true,
+          "type": "string",
+          "x-example": "63147"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-tournament-talents": {
+      "id": "gosugamers-tournament-talents",
+      "method": "GET",
+      "path": "/gosugamers/tournament-talents",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tournament_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Numeric tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results",
+          "in": "query",
+          "name": "tournament_id",
+          "required": true,
+          "type": "string",
+          "x-example": "63147"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "gosugamers-tournaments": {
+      "id": "gosugamers-tournaments",
+      "method": "GET",
+      "path": "/gosugamers/tournaments",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "game",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ]
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "all",
+            "ongoing",
+            "upcoming",
+            "past"
+          ]
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page_size",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "in": "query",
+          "name": "game",
+          "type": "string"
+        },
+        {
+          "description": "Tournament state; one of all, ongoing, upcoming, past; defaults to all",
+          "enum": [
+            "all",
+            "ongoing",
+            "upcoming",
+            "past"
+          ],
+          "in": "query",
+          "name": "state",
+          "type": "string"
+        },
+        {
+          "description": "Tournament name prefix, up to 100 characters",
+          "in": "query",
+          "name": "q",
+          "type": "string",
+          "x-example": "VCT"
+        },
+        {
+          "description": "1-based page; defaults to 1",
+          "in": "query",
+          "minimum": 1,
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Page size, 1 to 100; defaults to 10",
+          "in": "query",
+          "maximum": 100,
+          "minimum": 1,
+          "name": "page_size",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    }
+  }
+}

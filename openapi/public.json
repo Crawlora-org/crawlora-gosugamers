@@ -1,0 +1,3350 @@
+{
+  "basePath": "/api/v1",
+  "definitions": {
+    "app.Response": {
+      "description": "The Response struct is used for wrapping the API response with a code, message, and data.",
+      "properties": {
+        "code": {
+          "description": "Code is the HTTP status code or a custom code used to indicate the result of the request\n@example 200",
+          "type": "integer"
+        },
+        "data": {
+          "description": "Data is the response data (can be any object or null)\n@example {\"id\": 1, \"name\": \"John Doe\"}"
+        },
+        "msg": {
+          "description": "Msg is the message that describes the result of the request\n@example \"Request successful\""
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.ArticleAuthor": {
+      "properties": {
+        "name": {
+          "example": "Timaugustin",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.ArticleDetail": {
+      "properties": {
+        "authors": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.ArticleAuthor"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "id": {
+          "example": "79434",
+          "type": "string"
+        },
+        "image_caption": {
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "published_at": {
+          "example": "2026-10-28T15:25:00Z",
+          "type": "string"
+        },
+        "related": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.RelatedArticle"
+          },
+          "type": "array"
+        },
+        "section": {
+          "example": "entertainment",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "teaser": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "news",
+            "features"
+          ],
+          "example": "news",
+          "type": "string"
+        },
+        "updated_at": {
+          "example": "2026-10-28T15:30:39Z",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.ArticleSummary": {
+      "properties": {
+        "author": {
+          "example": "Timaugustin",
+          "type": "string"
+        },
+        "id": {
+          "example": "79434",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "published_at": {
+          "example": "2026-10-28T15:25:00Z",
+          "type": "string"
+        },
+        "section": {
+          "example": "entertainment",
+          "type": "string"
+        },
+        "teaser": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "news",
+            "features"
+          ],
+          "example": "news",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.ArticlesResponse": {
+      "properties": {
+        "articles": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.ArticleSummary"
+          },
+          "type": "array"
+        },
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page_size": {
+          "example": 10,
+          "type": "integer"
+        },
+        "section": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "total_pages": {
+          "example": 5106,
+          "type": "integer"
+        },
+        "total_rows": {
+          "example": 51051,
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "news",
+            "features"
+          ],
+          "example": "news",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.BattleRoyalePlayer": {
+      "properties": {
+        "country_code": {
+          "example": "IQ",
+          "type": "string"
+        },
+        "id": {
+          "example": "505275",
+          "type": "string"
+        },
+        "name": {
+          "example": "AZHY",
+          "type": "string"
+        },
+        "slug": {
+          "example": "azhy",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.BattleRoyaleTeam": {
+      "properties": {
+        "country_code": {
+          "example": "IQ",
+          "type": "string"
+        },
+        "id": {
+          "example": "52872",
+          "type": "string"
+        },
+        "kill_points": {
+          "example": 11,
+          "type": "integer"
+        },
+        "kills": {
+          "example": 11,
+          "type": "integer"
+        },
+        "name": {
+          "example": "4K Esports",
+          "type": "string"
+        },
+        "placement": {
+          "example": 1,
+          "type": "integer"
+        },
+        "placement_points": {
+          "example": 0,
+          "type": "integer"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.BattleRoyalePlayer"
+          },
+          "type": "array"
+        },
+        "points_addition": {
+          "type": "integer"
+        },
+        "points_deduction": {
+          "type": "integer"
+        },
+        "slug": {
+          "example": "4k-esports",
+          "type": "string"
+        },
+        "total_points": {
+          "example": 11,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.BroadcastTalent": {
+      "properties": {
+        "country_code": {
+          "example": "GB",
+          "type": "string"
+        },
+        "country_name": {
+          "example": "United Kingdom",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "id": {
+          "example": "597",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "language_code": {
+          "example": "EN",
+          "type": "string"
+        },
+        "name": {
+          "example": "Frankie",
+          "type": "string"
+        },
+        "roles": {
+          "example": [
+            "Host"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "slug": {
+          "example": "frankie",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.EncountersResponse": {
+      "properties": {
+        "count": {
+          "example": 1,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "match_id": {
+          "example": "660816",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.MatchSummary"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "team1_id": {
+          "example": "38335",
+          "type": "string"
+        },
+        "team2_id": {
+          "example": "37547",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.Game": {
+      "properties": {
+        "name": {
+          "example": "Valorant",
+          "type": "string"
+        },
+        "slug": {
+          "enum": [
+            "dota2",
+            "counterstrike",
+            "lol",
+            "valorant",
+            "mobile-legends",
+            "pubg-mobile",
+            "wild-rift",
+            "free-fire",
+            "battlegrounds-mobile-india"
+          ],
+          "example": "valorant",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GameMap": {
+      "properties": {
+        "id": {
+          "example": "453",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Summit",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GamePick": {
+      "properties": {
+        "image_url": {
+          "type": "string"
+        },
+        "pick": {
+          "example": "Neon",
+          "type": "string"
+        },
+        "player": {
+          "$ref": "#/definitions/gosugamers.GamePlayer"
+        },
+        "slot": {
+          "example": 6,
+          "type": "integer"
+        },
+        "type": {
+          "example": 1,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GamePlayer": {
+      "properties": {
+        "id": {
+          "example": "373491",
+          "type": "string"
+        },
+        "name": {
+          "example": "Ninebody",
+          "type": "string"
+        },
+        "slug": {
+          "example": "ninebody",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GameRef": {
+      "properties": {
+        "id": {
+          "example": "1361936",
+          "type": "string"
+        },
+        "number": {
+          "example": 1,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GameRound": {
+      "properties": {
+        "overtime": {
+          "example": false,
+          "type": "boolean"
+        },
+        "period": {
+          "example": 0,
+          "type": "integer"
+        },
+        "team1_score": {
+          "example": 6,
+          "type": "integer"
+        },
+        "team2_score": {
+          "example": 6,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GameTeam": {
+      "properties": {
+        "first_pick": {
+          "example": false,
+          "type": "boolean"
+        },
+        "id": {
+          "example": "58674",
+          "type": "string"
+        },
+        "lineup": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GamePlayer"
+          },
+          "type": "array"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Unsettled Resentment",
+          "type": "string"
+        },
+        "picks": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GamePick"
+          },
+          "type": "array"
+        },
+        "placement": {
+          "example": 1,
+          "type": "integer"
+        },
+        "score": {
+          "example": 17,
+          "type": "integer"
+        },
+        "side": {
+          "example": "Radiant",
+          "type": "string"
+        },
+        "slug": {
+          "example": "unsettled-resentment",
+          "type": "string"
+        },
+        "winner": {
+          "example": true,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GameVOD": {
+      "properties": {
+        "channel": {
+          "type": "string"
+        },
+        "host": {
+          "example": 0,
+          "type": "integer"
+        },
+        "thumb_url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "video_id": {
+          "example": "qqauxAJWoFw",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.GamesResponse": {
+      "properties": {
+        "count": {
+          "example": 6,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "games": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Game"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.MatchDetail": {
+      "properties": {
+        "best_of": {
+          "example": 3,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "finished": {
+          "example": false,
+          "type": "boolean"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "game_numbers": {
+          "example": [
+            1
+          ],
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "games": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GameRef"
+          },
+          "type": "array"
+        },
+        "group": {
+          "example": "Week 2",
+          "type": "string"
+        },
+        "id": {
+          "example": "663300",
+          "type": "string"
+        },
+        "opponents": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Opponent"
+          },
+          "type": "array"
+        },
+        "round": {
+          "example": "Round 1",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "stage": {
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-10-27T12:45:00Z",
+          "type": "string"
+        },
+        "streams": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Stream"
+          },
+          "type": "array"
+        },
+        "tournament": {
+          "$ref": "#/definitions/gosugamers.TournamentRef"
+        },
+        "url": {
+          "type": "string"
+        },
+        "venue": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.MatchGameResponse": {
+      "properties": {
+        "battle_royale_teams": {
+          "description": "BattleRoyaleTeams is filled for battle-royale titles (PUBG Mobile), which list every\nteam's placement and points instead of two sides.",
+          "items": {
+            "$ref": "#/definitions/gosugamers.BattleRoyaleTeam"
+          },
+          "type": "array"
+        },
+        "best_of": {
+          "example": 3,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "id": {
+          "example": "1361936",
+          "type": "string"
+        },
+        "map": {
+          "$ref": "#/definitions/gosugamers.GameMap"
+        },
+        "match_number": {
+          "example": 1,
+          "type": "integer"
+        },
+        "number": {
+          "example": 1,
+          "type": "integer"
+        },
+        "player_based": {
+          "example": false,
+          "type": "boolean"
+        },
+        "round": {
+          "example": "Round 1",
+          "type": "string"
+        },
+        "rounds": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GameRound"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-10-27T01:00:00Z",
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GameTeam"
+          },
+          "type": "array"
+        },
+        "vods": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.GameVOD"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.MatchListResponse": {
+      "properties": {
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.MatchSummary"
+          },
+          "type": "array"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page_size": {
+          "example": 10,
+          "type": "integer"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "total_pages": {
+          "example": 165,
+          "type": "integer"
+        },
+        "total_rows": {
+          "example": 1647,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.MatchSummary": {
+      "properties": {
+        "finished": {
+          "example": false,
+          "type": "boolean"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "group": {
+          "example": "Week 2",
+          "type": "string"
+        },
+        "id": {
+          "example": "663300",
+          "type": "string"
+        },
+        "match_number": {
+          "example": 2,
+          "type": "integer"
+        },
+        "round": {
+          "example": "Round 1",
+          "type": "string"
+        },
+        "stage": {
+          "example": "Main Event",
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-10-27T12:45:00Z",
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Team"
+          },
+          "type": "array"
+        },
+        "tournament": {
+          "$ref": "#/definitions/gosugamers.TournamentRef"
+        },
+        "url": {
+          "type": "string"
+        },
+        "venue": {
+          "example": "The Hub, Shanghai, China",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.Opponent": {
+      "properties": {
+        "country": {
+          "example": "China",
+          "type": "string"
+        },
+        "country_code": {
+          "example": "CN",
+          "type": "string"
+        },
+        "id": {
+          "example": "51203",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Wolves Esports",
+          "type": "string"
+        },
+        "placement": {
+          "example": 1,
+          "type": "integer"
+        },
+        "score": {
+          "example": 2,
+          "type": "integer"
+        },
+        "slug": {
+          "example": "wolves-esports",
+          "type": "string"
+        },
+        "tag": {
+          "example": "WOL",
+          "type": "string"
+        },
+        "winner": {
+          "example": true,
+          "type": "boolean"
+        },
+        "world_ranking": {
+          "example": 69,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.Participant": {
+      "properties": {
+        "country_code": {
+          "example": "US",
+          "type": "string"
+        },
+        "country_name": {
+          "example": "United States",
+          "type": "string"
+        },
+        "id": {
+          "example": "37547",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "100T",
+          "type": "string"
+        },
+        "ranking": {
+          "example": 1,
+          "type": "integer"
+        },
+        "slug": {
+          "example": "100-thieves",
+          "type": "string"
+        },
+        "type": {
+          "example": "Team",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.PlayerDetail": {
+      "properties": {
+        "about": {
+          "type": "string"
+        },
+        "country": {
+          "example": "Taiwan",
+          "type": "string"
+        },
+        "country_code": {
+          "example": "TW",
+          "type": "string"
+        },
+        "current_team": {
+          "$ref": "#/definitions/gosugamers.TeamStint"
+        },
+        "draws": {
+          "example": 0,
+          "type": "integer"
+        },
+        "earnings_usd": {
+          "example": 27692,
+          "type": "number"
+        },
+        "elo_rating": {
+          "example": 952,
+          "type": "integer"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "first_name": {
+          "example": "Chun-ting",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "id": {
+          "example": "368742",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "last_name": {
+          "example": "Liu",
+          "type": "string"
+        },
+        "losses": {
+          "example": 267,
+          "type": "integer"
+        },
+        "name": {
+          "example": "Spring",
+          "type": "string"
+        },
+        "previous_teams": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.TeamStint"
+          },
+          "type": "array"
+        },
+        "region": {
+          "example": "China",
+          "type": "string"
+        },
+        "region_ranking": {
+          "example": 16,
+          "type": "integer"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "streak": {
+          "example": -1,
+          "type": "integer"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "win_rate_percent": {
+          "example": 46,
+          "type": "integer"
+        },
+        "wins": {
+          "example": 228,
+          "type": "integer"
+        },
+        "world_ranking": {
+          "example": 69,
+          "type": "integer"
+        },
+        "youtube": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.RankRegion": {
+      "properties": {
+        "id": {
+          "example": 33,
+          "type": "integer"
+        },
+        "name": {
+          "example": "EMEA",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.RankedTeam": {
+      "properties": {
+        "elo": {
+          "example": 2078.5,
+          "type": "number"
+        },
+        "id": {
+          "example": "51203",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "100 Thieves",
+          "type": "string"
+        },
+        "previous_rank": {
+          "example": 2,
+          "type": "integer"
+        },
+        "rank": {
+          "example": 1,
+          "type": "integer"
+        },
+        "rank_change": {
+          "example": 1,
+          "type": "integer"
+        },
+        "rank_change_name": {
+          "example": "up",
+          "type": "string"
+        },
+        "slug": {
+          "example": "100-thieves",
+          "type": "string"
+        },
+        "tag": {
+          "example": "100T",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.RankingsResponse": {
+      "properties": {
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page_size": {
+          "example": 10,
+          "type": "integer"
+        },
+        "q": {
+          "example": "Te",
+          "type": "string"
+        },
+        "region_id": {
+          "example": 0,
+          "type": "integer"
+        },
+        "regions": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.RankRegion"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.RankedTeam"
+          },
+          "type": "array"
+        },
+        "total_pages": {
+          "example": 39,
+          "type": "integer"
+        },
+        "total_rows": {
+          "example": 384,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.RelatedArticle": {
+      "properties": {
+        "id": {
+          "example": "79433",
+          "type": "string"
+        },
+        "section": {
+          "example": "entertainment",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.RosterPlayer": {
+      "properties": {
+        "country": {
+          "example": "Taiwan",
+          "type": "string"
+        },
+        "country_code": {
+          "example": "TW",
+          "type": "string"
+        },
+        "id": {
+          "example": "368742",
+          "type": "string"
+        },
+        "joined_at": {
+          "example": "2024-01-16T16:00:00Z",
+          "type": "string"
+        },
+        "left_at": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Spring",
+          "type": "string"
+        },
+        "slug": {
+          "example": "spring-2",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.StageGroup": {
+      "properties": {
+        "format": {
+          "example": "Knockout",
+          "type": "string"
+        },
+        "id": {
+          "example": "71594",
+          "type": "string"
+        },
+        "name": {
+          "example": "Group C",
+          "type": "string"
+        },
+        "participant_count": {
+          "example": 4,
+          "type": "integer"
+        },
+        "participants": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Participant"
+          },
+          "type": "array"
+        },
+        "result_type": {
+          "example": "Bracket",
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-09-24T09:00:00Z",
+          "type": "string"
+        },
+        "status": {
+          "example": "COMPLETED",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.StageGroupsResponse": {
+      "properties": {
+        "count": {
+          "example": 5,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.StageGroup"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "stage_id": {
+          "example": "28413",
+          "type": "string"
+        },
+        "stage_name": {
+          "example": "Main Event",
+          "type": "string"
+        },
+        "tournament_id": {
+          "example": "63147",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.StageInfo": {
+      "properties": {
+        "id": {
+          "example": "28500",
+          "type": "string"
+        },
+        "live": {
+          "example": true,
+          "type": "boolean"
+        },
+        "name": {
+          "example": "Main Event",
+          "type": "string"
+        },
+        "order": {
+          "example": 1,
+          "type": "integer"
+        },
+        "status": {
+          "example": "Progressing",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.Stream": {
+      "properties": {
+        "language": {
+          "example": "zh",
+          "type": "string"
+        },
+        "live": {
+          "example": true,
+          "type": "boolean"
+        },
+        "platform_id": {
+          "example": 11,
+          "type": "integer"
+        },
+        "thumbnail_url": {
+          "type": "string"
+        },
+        "title": {
+          "example": "VALORANT Champions Tour CN",
+          "type": "string"
+        },
+        "viewer_count": {
+          "example": 534,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.Team": {
+      "properties": {
+        "id": {
+          "example": "51203",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Wolves Esports",
+          "type": "string"
+        },
+        "score": {
+          "example": 2,
+          "type": "integer"
+        },
+        "slug": {
+          "example": "wolves-esports",
+          "type": "string"
+        },
+        "tag": {
+          "example": "WOL",
+          "type": "string"
+        },
+        "winner": {
+          "example": true,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TeamDetail": {
+      "properties": {
+        "about": {
+          "type": "string"
+        },
+        "country": {
+          "example": "China",
+          "type": "string"
+        },
+        "country_code": {
+          "example": "CN",
+          "type": "string"
+        },
+        "draws": {
+          "example": 0,
+          "type": "integer"
+        },
+        "earnings_usd": {
+          "example": 132662.49,
+          "type": "number"
+        },
+        "elo_rating": {
+          "example": 952,
+          "type": "integer"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "id": {
+          "example": "51203",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "losses": {
+          "example": 55,
+          "type": "integer"
+        },
+        "name": {
+          "example": "Wolves Esports",
+          "type": "string"
+        },
+        "region": {
+          "example": "China",
+          "type": "string"
+        },
+        "region_ranking": {
+          "example": 16,
+          "type": "integer"
+        },
+        "roster": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.RosterPlayer"
+          },
+          "type": "array"
+        },
+        "slug": {
+          "example": "wolves-esports",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "streak": {
+          "example": -1,
+          "type": "integer"
+        },
+        "tag": {
+          "example": "WOL",
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "upcoming_matches": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.MatchSummary"
+          },
+          "type": "array"
+        },
+        "url": {
+          "type": "string"
+        },
+        "win_rate_percent": {
+          "example": 41,
+          "type": "integer"
+        },
+        "wins": {
+          "example": 39,
+          "type": "integer"
+        },
+        "world_ranking": {
+          "example": 69,
+          "type": "integer"
+        },
+        "youtube": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TeamResultsResponse": {
+      "properties": {
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.MatchSummary"
+          },
+          "type": "array"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page_size": {
+          "example": 10,
+          "type": "integer"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "team_id": {
+          "example": "37547",
+          "type": "string"
+        },
+        "total_pages": {
+          "example": 23,
+          "type": "integer"
+        },
+        "total_rows": {
+          "example": 229,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TeamStint": {
+      "properties": {
+        "joined_at": {
+          "example": "2024-01-16T16:00:00Z",
+          "type": "string"
+        },
+        "left_at": {
+          "type": "string"
+        },
+        "name": {
+          "example": "Wolves Esports",
+          "type": "string"
+        },
+        "position": {
+          "example": "Member",
+          "type": "string"
+        },
+        "slug": {
+          "example": "wolves-esports",
+          "type": "string"
+        },
+        "tag": {
+          "example": "WOL",
+          "type": "string"
+        },
+        "team_id": {
+          "example": "51203",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentDetail": {
+      "properties": {
+        "country": {
+          "example": "China",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "game_name": {
+          "example": "Valorant",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "lan": {
+          "example": true,
+          "type": "boolean"
+        },
+        "prize_pool_usd": {
+          "example": 500000,
+          "type": "number"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "sponsors": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "stages": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.StageInfo"
+          },
+          "type": "array"
+        },
+        "start_time": {
+          "example": "2026-10-20T04:00:00Z",
+          "type": "string"
+        },
+        "status": {
+          "example": "Live",
+          "type": "string"
+        },
+        "tournament": {
+          "$ref": "#/definitions/gosugamers.TournamentRef"
+        },
+        "upcoming_matches": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.MatchSummary"
+          },
+          "type": "array"
+        },
+        "venue": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentParticipantsResponse": {
+      "properties": {
+        "count": {
+          "example": 16,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "participants": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.Participant"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "tournament_id": {
+          "example": "63147",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentRef": {
+      "properties": {
+        "id": {
+          "example": "63208",
+          "type": "string"
+        },
+        "name": {
+          "example": "VCT Threshold China 2026",
+          "type": "string"
+        },
+        "slug": {
+          "example": "vct-threshold-china-2026",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentRow": {
+      "properties": {
+        "featured": {
+          "example": false,
+          "type": "boolean"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "game_name": {
+          "example": "VALORANT",
+          "type": "string"
+        },
+        "id": {
+          "example": "63208",
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "name": {
+          "example": "VCT Threshold China 2026",
+          "type": "string"
+        },
+        "participant_count": {
+          "example": 8,
+          "type": "integer"
+        },
+        "prize_currency": {
+          "example": "USD",
+          "type": "string"
+        },
+        "prize_pool": {
+          "example": 500000,
+          "type": "number"
+        },
+        "prize_pool_usd": {
+          "example": 500000,
+          "type": "number"
+        },
+        "slug": {
+          "example": "vct-threshold-china-2026",
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-10-20T04:00:00Z",
+          "type": "string"
+        },
+        "status": {
+          "example": "Ongoing",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentTalentsResponse": {
+      "properties": {
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "talents": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.BroadcastTalent"
+          },
+          "type": "array"
+        },
+        "tournament_id": {
+          "example": "63147",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "gosugamers.TournamentsResponse": {
+      "properties": {
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "game": {
+          "example": "valorant",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page_size": {
+          "example": 10,
+          "type": "integer"
+        },
+        "q": {
+          "example": "VCT",
+          "type": "string"
+        },
+        "source_url": {
+          "example": "https://www.gosugamers.net/valorant/matches",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "all",
+            "ongoing",
+            "upcoming",
+            "past"
+          ],
+          "example": "all",
+          "type": "string"
+        },
+        "total_pages": {
+          "example": 152,
+          "type": "integer"
+        },
+        "total_rows": {
+          "example": 1511,
+          "type": "integer"
+        },
+        "tournaments": {
+          "items": {
+            "$ref": "#/definitions/gosugamers.TournamentRow"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.crawlora.net",
+  "info": {
+    "contact": {
+      "email": "support@crawlora.net",
+      "name": "API Support",
+      "url": "https://crawlora.net"
+    },
+    "description": "Crawlora is a hosted web-data and SERP API: call documented REST endpoints and get normalized JSON instead of HTML to parse — across search/SERP, maps and local, e-commerce, app stores, social, media and finance. One API key; Crawlora runs the proxy rotation, headless browsers and parsing behind the scenes. Billed pay-on-success: charged only on a successful 2xx response, 1-10 credits per call, with a free tier of 2,000 credits per month and no card. A hosted MCP server (mcp.crawlora.net/mcp) exposes the same catalog as agent tools. Search endpoints accept `q` as a universal alias for whichever search-term parameter they document (`query`, `term`, `keyword`, or Amazon's `k`), so one parameter name works across the whole catalog; an explicitly supplied documented name always wins.",
+    "license": {
+      "name": "Crawlora Terms of Service",
+      "url": "https://crawlora.net/terms"
+    },
+    "termsOfService": "https://crawlora.net/terms",
+    "title": "Crawlora API",
+    "version": "1.2",
+    "x-logo": {
+      "altText": "Crawlora",
+      "backgroundColor": "#FFFFFF",
+      "url": "https://raw.githubusercontent.com/Crawlora-org/crawlora-mcp/main/assets/logo-400x400.png"
+    }
+  },
+  "paths": {
+    "/gosugamers/article": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one GosuGamers news or features article by numeric id: type, title, teaser, section, publish and update times, headline image with caption, authors, the full text as plain text and related articles. An unknown id returns not found. Take `id` from gosugamers-articles.",
+        "operationId": "gosugamers-article",
+        "parameters": [
+          {
+            "description": "Numeric article id from gosugamers-articles",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "79434"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.ArticleDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers article",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/articles": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Pages the GosuGamers news and features archive (51,051 articles), newest first, with optional `section` and `type` filters: id, type, title, teaser, section, publish time, author, image and URL. `section` is one of the 15 sections that carry articles (the six esports titles, Wild Rift, Free Fire, Battlegrounds Mobile India and the editorial sections entertainment, genshin-impact, honkai-star-rail, zenless-zone-zero, honor-of-kings and umamusume-pretty-derby); an article can belong to several sections. `type` is `news` or `features`. Paged with `page` and `page_size` (up to 100). Use gosugamers-article with a returned id for the text.",
+        "operationId": "gosugamers-articles",
+        "parameters": [
+          {
+            "description": "Article section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india, entertainment, genshin-impact, honkai-star-rail, zenless-zone-zero, honor-of-kings, umamusume-pretty-derby; omit for all",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india",
+              "entertainment",
+              "genshin-impact",
+              "honkai-star-rail",
+              "zenless-zone-zero",
+              "honor-of-kings",
+              "umamusume-pretty-derby"
+            ],
+            "in": "query",
+            "name": "section",
+            "type": "string"
+          },
+          {
+            "description": "Article type; one of news, features; omit for both",
+            "enum": [
+              "news",
+              "features"
+            ],
+            "in": "query",
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "description": "1-based page; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.ArticlesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers news and features archive",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/encounters": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the other recorded meetings between two GosuGamers teams as seen from one match: tournament, start time, both teams with ids, tags and final scores, winner flags and the match URL. The given `match_id` itself is left out; `game` is required by the upstream but does not narrow the list. Take the ids from gosugamers-matches, gosugamers-results or gosugamers-rankings. Two teams with no other meeting return an empty list.",
+        "operationId": "gosugamers-encounters",
+        "parameters": [
+          {
+            "description": "Game section of the match; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Numeric id of the match whose other meetings are wanted; that match is left out",
+            "in": "query",
+            "name": "match_id",
+            "required": true,
+            "type": "string",
+            "x-example": "660816"
+          },
+          {
+            "description": "Numeric id of the first team",
+            "in": "query",
+            "name": "team1_id",
+            "required": true,
+            "type": "string",
+            "x-example": "38335"
+          },
+          {
+            "description": "Numeric id of the second team",
+            "in": "query",
+            "name": "team2_id",
+            "required": true,
+            "type": "string",
+            "x-example": "37547"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.EncountersResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers head-to-head meetings",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/games": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the game sections whose match pages this API reads: `dota2`, `counterstrike`, `lol`, `valorant`, `mobile-legends`, `pubg-mobile`, `wild-rift`, `free-fire` and `battlegrounds-mobile-india`, with display names. Use a slug as `game` in the other gosugamers endpoints.",
+        "operationId": "gosugamers-games",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.GamesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers game sections",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/match": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one GosuGamers match: start time, tournament, stage, round, best-of, finished flag, both opponents with score, placement, world ranking and country, the number of games in the series and linked streams with language and viewer count. All of `game`, `tournament_id` and `match_id` are required; an id that does not belong to the stated tournament returns not found. Battle-royale titles can list more than two opponents. The `games` list gives each game's id for gosugamers-match-game.",
+        "operationId": "gosugamers-match",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string",
+            "x-example": "dota2"
+          },
+          {
+            "description": "Numeric tournament id from gosugamers-matches or gosugamers-results (tournament.id)",
+            "in": "query",
+            "name": "tournament_id",
+            "required": true,
+            "type": "string",
+            "x-example": "63208"
+          },
+          {
+            "description": "Numeric match id from gosugamers-matches or gosugamers-results (id)",
+            "in": "query",
+            "name": "match_id",
+            "required": true,
+            "type": "string",
+            "x-example": "663299"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.MatchDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers esports match detail",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/match-game": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one game of a GosuGamers match: the map, each team's score, side and first-pick flag, the picks or bans with the player (agents, heroes or champions where the title publishes them), the lineups, round or half scores (Counter-Strike and Valorant), every team's placement, kills and points for battle-royale games (PUBG Mobile) and VODs. Take `game_id` from the `games` list of gosugamers-match. Fields a title does not publish are empty. An unknown game id returns not found.",
+        "operationId": "gosugamers-match-game",
+        "parameters": [
+          {
+            "description": "Numeric game id from the games list of gosugamers-match",
+            "in": "query",
+            "name": "game_id",
+            "required": true,
+            "type": "string",
+            "x-example": "1361936"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.MatchGameResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers single game (map) of a match",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the next upcoming and currently live esports matches from GosuGamers, for one `game` or across all games, 10 per page by default and up to 100 with `page` and `page_size`: start time, tournament, stage, round, both teams and the match URL. `total_rows` reports how many matches the site lists. Use gosugamers-match with the returned tournament and match ids.",
+        "operationId": "gosugamers-matches",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "type": "string"
+          },
+          {
+            "description": "1-based page; page 1 with the default size is read from the public page, any other page or size from the site's JSON API; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.MatchListResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers upcoming and live esports matches",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/player": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one GosuGamers player: in-game name, real name, country, GosuGamers Elo rating and world and regional ranking, win/loss/draw record and win rate, streak, career earnings in USD, social links, the current team and previous teams with join and leave dates. A player of a different game than `game` returns not found.",
+        "operationId": "gosugamers-player",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string",
+            "x-example": "dota2"
+          },
+          {
+            "description": "Numeric player id from gosugamers-team (roster[].id)",
+            "in": "query",
+            "name": "player_id",
+            "required": true,
+            "type": "string",
+            "x-example": "368742"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.PlayerDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers esports player profile",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/rankings": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the GosuGamers Elo team ranking for one `game`, globally or for one ranking region (`region_id`, taken from the `regions` list in the response; 0 is Global), with an optional team name prefix `q`: rank, team id, name, tag, Elo, previous rank and rank change. Paged with `page` and `page_size` (up to 100); `total_rows` reports the size of the ranking. A `region_id` that the game does not list returns an invalid-parameter error.",
+        "operationId": "gosugamers-rankings",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Ranking region id from the regions list of the response; 0 is Global; defaults to 0",
+            "in": "query",
+            "minimum": 0,
+            "name": "region_id",
+            "type": "integer"
+          },
+          {
+            "description": "Team name prefix, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "Te"
+          },
+          {
+            "description": "1-based page; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.RankingsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers team rankings",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/results": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the most recent completed esports matches from GosuGamers, for one `game` or across all games, 10 per page by default and up to 100 with `page` and `page_size`, with final scores and winner flags. `total_rows` reports how many results the site lists. Use gosugamers-match with the returned ids for opponents, ranking and streams.",
+        "operationId": "gosugamers-results",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "type": "string"
+          },
+          {
+            "description": "1-based page; page 1 with the default size is read from the public page, any other page or size from the site's JSON API; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.MatchListResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers recent esports match results",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/stage-groups": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the groups (child tournaments) of one stage of a GosuGamers tournament, each with its format (for example Knockout), result type (for example Bracket), status, start time and the teams in it with ranking and country. Take `tournament_id` from gosugamers-tournaments or gosugamers-matches and `stage_id` from the stages list of gosugamers-tournament. An unknown stage, or a stage of another tournament, returns an empty list.",
+        "operationId": "gosugamers-stage-groups",
+        "parameters": [
+          {
+            "description": "Numeric tournament id from gosugamers-tournaments or gosugamers-matches",
+            "in": "query",
+            "name": "tournament_id",
+            "required": true,
+            "type": "string",
+            "x-example": "63147"
+          },
+          {
+            "description": "Numeric stage id (stages[].id) from gosugamers-tournament",
+            "in": "query",
+            "name": "stage_id",
+            "required": true,
+            "type": "string",
+            "x-example": "28413"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.StageGroupsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers tournament stage groups",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/team": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one GosuGamers team: name, tag, country, logo, GosuGamers Elo rating and world and regional ranking, win/loss/draw record and win rate, current streak, career earnings in USD, social links, the roster with join dates and the team's next upcoming matches. A team of a different game than `game` returns not found.",
+        "operationId": "gosugamers-team",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string",
+            "x-example": "dota2"
+          },
+          {
+            "description": "Numeric team id from gosugamers-matches, gosugamers-results or gosugamers-match (teams[].id)",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "string",
+            "x-example": "51203"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TeamDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers esports team profile",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/team-results": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the completed matches of one GosuGamers team, newest first, across the games it plays: start time, tournament, both teams with ids and final scores, winner flags and the match URL. Paged with `page` and `page_size` (up to 100, default 10); `total_rows` is the team's full history. An unknown team id returns an empty list. Take `team_id` from gosugamers-rankings, gosugamers-results or gosugamers-team.",
+        "operationId": "gosugamers-team-results",
+        "parameters": [
+          {
+            "description": "Numeric team id from gosugamers-rankings, gosugamers-results or gosugamers-team",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "string",
+            "x-example": "37547"
+          },
+          {
+            "description": "1-based page; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TeamResultsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers team match history",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/tournament": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one GosuGamers tournament: name, status, start time, description, LAN flag, venue and country, prize pool in USD when listed, sponsors, stages with their status and the next upcoming matches. A tournament that belongs to a different game than `game` returns not found.",
+        "operationId": "gosugamers-tournament",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string",
+            "x-example": "dota2"
+          },
+          {
+            "description": "Numeric tournament id from gosugamers-matches or gosugamers-results (tournament.id)",
+            "in": "query",
+            "name": "tournament_id",
+            "required": true,
+            "type": "string",
+            "x-example": "63208"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TournamentDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers esports tournament detail",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/tournament-participants": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the teams entered in one GosuGamers tournament: id, name, slug, logo, GosuGamers ranking, country and team URL. Both `game` and `tournament_id` are required; the upstream does not narrow the list by game, and an unknown tournament id returns an empty list. Take the tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results and use a team id with gosugamers-team or gosugamers-team-results.",
+        "operationId": "gosugamers-tournament-participants",
+        "parameters": [
+          {
+            "description": "Game section of the tournament; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Numeric tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results",
+            "in": "query",
+            "name": "tournament_id",
+            "required": true,
+            "type": "string",
+            "x-example": "63147"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TournamentParticipantsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers tournament participants",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/tournament-talents": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the casters, hosts and analysts assigned to one GosuGamers tournament: id, name, game, roles, broadcast language code, country, image and profile URL. An unknown tournament id, or a tournament with no listed crew, returns an empty list. Take the tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results.",
+        "operationId": "gosugamers-tournament-talents",
+        "parameters": [
+          {
+            "description": "Numeric tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results",
+            "in": "query",
+            "name": "tournament_id",
+            "required": true,
+            "type": "string",
+            "x-example": "63147"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TournamentTalentsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers tournament broadcast talents",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    },
+    "/gosugamers/tournaments": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Lists GosuGamers esports tournaments, optionally for one `game` and one `state` (`all`, `ongoing`, `upcoming`, `past`), with an optional name prefix `q`: id, name, game, status, start time, prize pool with currency and USD value, participant count, featured flag and the tournament URL. Paged with `page` and `page_size` (up to 100); `total_rows` reports the size of the filtered list. Use gosugamers-tournament with a returned id and game for stages and upcoming matches.",
+        "operationId": "gosugamers-tournaments",
+        "parameters": [
+          {
+            "description": "Game section; one of dota2, counterstrike, lol, valorant, mobile-legends, pubg-mobile, wild-rift, free-fire, battlegrounds-mobile-india; omit for all games",
+            "enum": [
+              "dota2",
+              "counterstrike",
+              "lol",
+              "valorant",
+              "mobile-legends",
+              "pubg-mobile",
+              "wild-rift",
+              "free-fire",
+              "battlegrounds-mobile-india"
+            ],
+            "in": "query",
+            "name": "game",
+            "type": "string"
+          },
+          {
+            "description": "Tournament state; one of all, ongoing, upcoming, past; defaults to all",
+            "enum": [
+              "all",
+              "ongoing",
+              "upcoming",
+              "past"
+            ],
+            "in": "query",
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "description": "Tournament name prefix, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "VCT"
+          },
+          {
+            "description": "1-based page; defaults to 1",
+            "in": "query",
+            "minimum": 1,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Page size, 1 to 100; defaults to 10",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/gosugamers.TournamentsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "GosuGamers esports tournament directory",
+        "tags": [
+          "gosugamers"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "gosugamers"
+    }
+  ]
+}

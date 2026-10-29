@@ -1,0 +1,46 @@
+{
+  "name": "crawlora/gosugamers",
+  "description": "Crawlora GosuGamers API client with 17 endpoints for esports matches, results, tournaments, games, news, and articles",
+  "keywords": [
+    "crawlora",
+    "api-client",
+    "sdk",
+    "web-scraping",
+    "scraping-api",
+    "gosugamers",
+    "gosugamers-api",
+    "gosugamers-scraper",
+    "gosugamers-data",
+    "gosugamers-esports-matches",
+    "gosugamers-results",
+    "gosugamers-tournaments",
+    "gosugamers-games",
+    "gosugamers-news",
+    "gosugamers-articles"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Crawlora\\Gosugamers\\": "php/src/Crawlora/Gosugamers/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crawlora\\Gosugamers\\Tests\\": "php/tests/"
+    }
+  },
+  "scripts": {
+    "test": "php php/tests/client_test.php"
+  },
+  "homepage": "https://crawlora.net/?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=gosugamers-php-homepage",
+  "support": {
+    "source": "https://github.com/Crawlora-org/crawlora-gosugamers",
+    "docs": "https://crawlora.net/docs?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=gosugamers-php-api-docs"
+  }
+}
