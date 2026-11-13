@@ -6,10 +6,10 @@ from .operations import OPERATION_COUNT, OPERATION_IDS, PLATFORM
 
 Client = GosuGamersClient
 AsyncClient = AsyncGosuGamersClient
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 DISPLAY_NAME = 'GosuGamers'
 PLATFORM = 'gosugamers'
-CONTRACT_REVISION = 'sha256:de5fed9f9e96ee896300f2d020f44d15ab18d3f5c885548c7cf5a6ef6a90df3d'
+CONTRACT_REVISION = 'sha256:4852bc089ee8d4c64d25328e6822569725709334855eb43fa757c85fda8e6216'
 
 __all__ = [
     "GosuGamersClient", "AsyncGosuGamersClient", "Client", "AsyncClient",

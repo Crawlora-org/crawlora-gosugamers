@@ -7,7 +7,7 @@ from .async_client import AsyncCrawloraClient
 class GosuGamersClient(CrawloraClient):
     """Synchronous GosuGamers API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-gosugamers-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-gosugamers-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     def article(self, **params: Any) -> Any:
@@ -115,7 +115,7 @@ class GosuGamersClient(CrawloraClient):
 class AsyncGosuGamersClient(AsyncCrawloraClient):
     """Asynchronous GosuGamers API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-gosugamers-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-gosugamers-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     async def article(self, **params: Any) -> Any:

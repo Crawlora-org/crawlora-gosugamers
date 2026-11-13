@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlora-gosugamers"
-version = "0.1.0"
+version = "0.2.0"
 description = "Crawlora GosuGamers API client with 17 endpoints for esports matches, results, tournaments, games, news, and articles"
 readme = "README.md"
 keywords = ["crawlora", "api-client", "sdk", "web-scraping", "scraping-api", "gosugamers", "gosugamers-api", "gosugamers-scraper", "gosugamers-data", "gosugamers-esports-matches", "gosugamers-results", "gosugamers-tournaments", "gosugamers-games", "gosugamers-news", "gosugamers-articles"]
