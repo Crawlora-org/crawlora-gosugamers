@@ -1,6 +1,6 @@
 {
   "name": "@crawlora-org/gosugamers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Crawlora GosuGamers API client with 17 endpoints for esports matches, results, tournaments, games, news, and articles",
   "homepage": "https://crawlora.net/?utm_source=npm&utm_medium=referral&utm_campaign=platform-clients&utm_content=gosugamers-javascript-homepage",
   "bugs": { "url": "https://github.com/Crawlora-org/crawlora-gosugamers/issues" },

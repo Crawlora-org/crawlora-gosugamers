@@ -2010,7 +2010,8 @@
             "in": "query",
             "name": "game",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-example": "valorant"
           },
           {
             "description": "Numeric id of the match whose other meetings are wanted; that match is left out",
@@ -2536,7 +2537,8 @@
             "in": "query",
             "name": "game",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-example": "valorant"
           },
           {
             "description": "Ranking region id from the regions list of the response; 0 is Global; defaults to 0",
@@ -3086,7 +3088,8 @@
             "in": "query",
             "name": "game",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-example": "valorant"
           },
           {
             "description": "Numeric tournament id from gosugamers-tournaments, gosugamers-matches or gosugamers-results",

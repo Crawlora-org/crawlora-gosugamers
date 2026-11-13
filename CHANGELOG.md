@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 — 2026-11-13
+
+- Updated operation contracts: gosugamers-encounters, gosugamers-rankings, gosugamers-tournament-participants.
+
 ## 0.1.0 — 2026-10-07
 
 - Initial GosuGamers platform clients for Crawlora's hosted API across JavaScript/TypeScript, Python, Go, Ruby, Java, PHP, and Rust.

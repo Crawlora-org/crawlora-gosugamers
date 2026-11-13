@@ -8,7 +8,7 @@ Official Crawlora client packages for the hosted GosuGamers API. Access 17 API e
 - Python: [`crawlora-gosugamers`](python/README.md)
 - Go: [`github.com/Crawlora-org/crawlora-gosugamers`](go.mod)
 - Ruby: [`crawlora-gosugamers`](ruby/README.md)
-- Java: [`net.crawlora:crawlora-gosugamers:0.1.0`](java/README.md)
+- Java: [`net.crawlora:crawlora-gosugamers:0.2.0`](java/README.md)
 - PHP: [`crawlora/gosugamers`](php/README.md)
 - Rust: [`crawlora-gosugamers`](rust/README.md)
 

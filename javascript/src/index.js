@@ -9,7 +9,7 @@ import {
 
 export class GosuGamersClient extends CrawloraClient {
   constructor(options = {}) {
-    super({ ...options, userAgent: options.userAgent ?? "crawlora-gosugamers-js/0.1.0" });
+    super({ ...options, userAgent: options.userAgent ?? "crawlora-gosugamers-js/0.2.0" });
     this["article"] = (...args) => this.request("gosugamers-article", ...args);
     this["articles"] = (...args) => this.request("gosugamers-articles", ...args);
     this["encounters"] = (...args) => this.request("gosugamers-encounters", ...args);
@@ -39,5 +39,5 @@ export {
   CrawloraServerError
 };
 export { groups, operations, operationCount, OperationIds } from "./operations.js";
-export const VERSION = "0.1.0";
+export const VERSION = "0.2.0";
 export default GosuGamersClient;
